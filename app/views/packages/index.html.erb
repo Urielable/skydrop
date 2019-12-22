@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Packages</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Tracking number</th>
+      <th scope="col">Carrier</th>
+      <th scope="col">Parcel</th>
+      <th scope="col">Overweight</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @packages.each do |package| %>
+      <tr>
+        <td><%= package.tracking_number %></td>
+        <td><%= package.carrier %></td>
+        <td><%= package.parcel_id %></td>
+        <td><%= package.overweight %></td>
+        <td> 
+          <% if package.overweight %> 
+            <span class="badge badge-warning">Over Weight </span>
+          <% end %> 
+        </td>
+        <td><%= link_to 'Show', package %></td>
+        <td><%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Package', new_package_path %>
