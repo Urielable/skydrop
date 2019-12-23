@@ -71,4 +71,9 @@ class PackagesController < ApplicationController
     def package_params
       params.require(:package).permit(:tracking_number, :carrier, :parcel_id, :overweight)
     end
+
+        # Never trust parameters from the scary internet, only allow the white list through.
+    def package_body_params
+      params.require(:body)
+    end
 end

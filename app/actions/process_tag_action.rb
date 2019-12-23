@@ -1,32 +1,43 @@
 class ProcessTagAction
-  def self.execute(read_labels)
+  def self.execute(label)
     f = FedexService::Request.new()
-    function = -> (label){
-      fedex_info = f.tracking_number label[:tracking_number]
-      if fedex_info != nil 
-        fedex_params = {
-          height: fedex_info.details[:package_dimensions][:height],
-          width: fedex_info.details[:package_dimensions][:width],
-          length: fedex_info.details[:package_dimensions][:length],
-          mass_unit: fedex_info.details[:package_dimensions][:units]
+    fedex_info = f.tracking_number label[:tracking_number]
+    if fedex_info != nil 
+      fedex_params = {
+        height: fedex_info.details[:package_dimensions][:height],
+        width: fedex_info.details[:package_dimensions][:width],
+        length: fedex_info.details[:package_dimensions][:length],
+        mass_unit: fedex_info.details[:package_dimensions][:units]
+      }
+      label_params = {
+        height: label[:parcel][:height],
+        width: label[:parcel][:width],
+        length: label[:parcel][:length],
+        mass_unit: label[:parcel][:mass_unit]
+      }
+      fedex_vweight = self.volumetric_weight fedex_params
+      label_vweight = self.volumetric_weight label_params
+      label_aweight = label[:parcel][:weight].ceil
+      higher_label_weight = label_vweight < label_aweight ? label_aweight : label_vweight
+      overweight = higher_label_weight - fedex_vweight > 0 ? false : true
+      label.merge!(
+        {
+          overweight: overweight, 
+          fedex_volumetric_weight: fedex_vweight,
+          higher_label_weight: higher_label_weight,
+          tag_processed: true
+        })
+    else
+      label.merge!(
+        {
+          overweight: nil, 
+          fedex_volumetric_weight: nil,
+          higher_label_weight: nil,
+          tag_processed: false
         }
-        label_params = {
-          height: label[:parcel][:height],
-          width: label[:parcel][:width],
-          length: label[:parcel][:length],
-          mass_unit: label[:parcel][:mass_unit]
-        }
-        fedex_vweight = self.volumetric_weight fedex_params
-        label_vweight = self.volumetric_weight label_params
-        label_aweight = label[:parcel][:weight].ceil
-        final_label_weight = label_vweight < label_aweight ? label_aweight : label_vweight
-        overweight = final_label_weight - fedex_vweight > 0 ? false : true
-        label.merge!({overweight: overweight})
-      else
-        label.merge!({overweight: nil})
-      end
-    }
-    read_labels.map(&function)
+      )
+    end
+    label
   end
 
   def self.volumetric_weight params = {}
