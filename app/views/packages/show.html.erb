@@ -11,8 +11,53 @@
 </p>
 
 <p>
-  <strong>Parcel:</strong>
-  <%= @package.parcel_id %>
+  <strong>Overweight:</strong>
+  <%= @package.overweight %>
+</p>
+
+<p>
+  <strong>Fedex volumetric weight:</strong>
+  <%= @package.fedex_volumetric_weight %>
+</p>
+
+<p>
+  <strong>Higher label weight:</strong>
+  <%= @package.higher_label_weight %>
+</p>
+
+<p>
+  <strong>Tag processed:</strong>
+  <%= @package.tag_processed %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @package.length %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @package.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @package.height %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @package.weight %>
+</p>
+
+<p>
+  <strong>Distance unit:</strong>
+  <%= @package.distance_unit %>
+</p>
+
+<p>
+  <strong>Mass unit:</strong>
+  <%= @package.mass_unit %>
 </p>
 
 <p>
@@ -20,5 +65,4 @@
   <%= @package.overweight %>
 </p>
 
-<%= link_to 'Edit', edit_package_path(@package) %> |
 <%= link_to 'Back', packages_path %>

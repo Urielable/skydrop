@@ -11,6 +11,7 @@ class Api::V1::PackagesController < ApplicationController
   # GET /api/v1/packages/1
   # GET /api/v1/packages/1.json
   def show
+
   end
 
   # POST /api/v1/packages
@@ -30,7 +31,7 @@ class Api::V1::PackagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_v1_package
-      @api_v1_package = Api::V1::Package.find(params[:id])
+      @api_v1_package = Api::V1::Package.packages_info({id:params[:id]})
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'bootstrap', '~> 4.4.1'
-gem "font-awesome-rails"
+gem 'font_awesome5_rails'
 gem 'jquery-rails'
 
 gem 'pg'

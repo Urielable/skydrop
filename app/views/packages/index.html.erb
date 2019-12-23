@@ -2,36 +2,39 @@
 
 <h1>Packages</h1>
 
-<%= link_to 'Load labels', new_package_path, class: "btn btn-primary", id: "new-package" %>
+<div class="container-fluid">
+  <%= link_to 'Load labels', new_package_path, class: "btn btn-primary", id: "new-package" %>
+</div>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Tracking number</th>
-      <th scope="col">Carrier</th>
-      <th scope="col" colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @packages.each do |package| %>
+<div class="container-fluid">
+  <table class="table">
+    <thead class="thead-light">
       <tr>
-        <td><%= package.tracking_number %></td>
-        <td><%= package.carrier %></td>
-        <td> 
-          <% if package.overweight %> 
-            <span class="badge badge-warning">Over Weight </span>
-          <% elsif package.tag_processed == false %> 
-            <span class="badge badge-danger">Fedex Service fail</span>
-          <% end %> 
-        </td>
-        <td>
-          <%= link_to package do %>
-            <%= fa_icon "fas fa-edit" %>
-          <% end %>
+        <th scope="col">Tracking number</th>
+        <th scope="col">Carrier</th>
+        <th scope="col" colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @packages.each do |package| %>
+        <tr>
+          <td><%= package.tracking_number %></td>
+          <td><%= package.carrier %></td>
+          <td> 
+            <% if package.overweight %> 
+              <span class="badge badge-warning">Over Weight </span>
+            <% elsif package.tag_processed == false %> 
+              <span class="badge badge-danger">Fedex Service fail</span>
+            <% end %> 
+          </td>
+          <td>
+            <%= link_to package do %>
+              <i class="far fa-eye"></i>
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
