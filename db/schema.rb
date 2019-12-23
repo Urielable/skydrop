@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_001050) do
+ActiveRecord::Schema.define(version: 2019_12_23_010646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2019_12_22_001050) do
     t.boolean "overweight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "fedex_volumetric_weight"
+    t.decimal "higher_label_weight"
+    t.boolean "tag_processed", default: false
     t.index ["parcel_id"], name: "index_packages_on_parcel_id"
   end
 

@@ -3,7 +3,7 @@
 <h1>Packages</h1>
 
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">Tracking number</th>
       <th scope="col">Carrier</th>
@@ -23,6 +23,7 @@
         <td> 
           <% if package.overweight %> 
             <span class="badge badge-warning">Over Weight </span>
+            
           <% end %> 
         </td>
         <td><%= link_to 'Show', package %></td>
