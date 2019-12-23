@@ -1,21 +1,25 @@
-<%= form_with(model: package, local: true) do |form| %>
-  <% if package.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+<div data-controller="hello">
+  <%= form_with(model: package, local: true) do |form| %>
+    <% if package.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
 
-      <ul>
-        <% package.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% package.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.text_area :body, size: "60x12", id: "package_body" %>
+    </div>
+    
+    <div class="actions">
+      <button id="send-packages" type="button" class="btn btn-primary">Send</button>
+      <%= link_to 'Back', packages_path, class: "btn btn-secondary" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.text_area :body, size: "60x12" %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

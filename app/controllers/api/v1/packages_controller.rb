@@ -19,7 +19,11 @@ class Api::V1::PackagesController < ApplicationController
     process_tag = -> (tag){
       ProcessTagAction.execute(tag.to_h) 
     }
+    save_package = -> (package){
+      SavePackageAction.execute(package)
+    }
     @packages = api_v1_package_params.map(&process_tag)
+    @packages.map(&save_package)
     render :index
   end
 
