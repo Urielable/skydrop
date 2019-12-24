@@ -1,24 +1,103 @@
-# README
+## SKYDROP overweight exercise
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application for process labels packages and calculates if there is an overweight directly in the Fedex services.
 
-Things you may want to cover:
+#### Requirements:
 
 * Ruby version
+    - ruby: 2.6.3
 
 * System dependencies
+     - Rails: 6.0.2
+     - Postgres
 
-* Configuration
+#### Instalation
 
-* Database creation
+Run:
 
-* Database initialization
+```
+bundle install
+```
 
-* How to run the test suite
+Create Database:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rake db:create
+rake db:migrate
+```
 
-* Deployment instructions
+Run server: 
 
-* ...
+```
+rails s
+```
+
+#### Test suite
+
+For execute test run:
+
+```
+rails test
+```
+
+#### LiveDemo
+
+https://skydrop.herokuapp.com/
+
+### API Package service
+
+**Method:** POST
+
+**Endpoint:** `api/v1/packages`
+
+**Body:** 
+
+```bash
+curl -X POST \
+  http://0.0.0.0:3000/api/v1/packages \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 3da1f1d5-a7f5-4c8b-b94a-eafd8a10ca14' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"package":[
+	  {
+	    "tracking_number":"149331877648230",
+	    "carrier":"FEDEX",
+	    "parcel":{
+	      "length":29.7,
+	      "width":5,
+	      "height":21,
+	      "weight":2.0,
+	      "distance_unit":"CM",
+	      "mass_unit":"KG"
+	    }
+	  }
+	]
+}
+'
+```
+
+**Response:**
+
+```
+[
+    {
+        "tracking_number": "149331877648230",
+        "carrier": "FEDEX",
+        "parcel": {
+            "length": 29.7,
+            "width": 5,
+            "height": 21,
+            "weight": 2,
+            "distance_unit": "CM",
+            "mass_unit": "KG"
+        },
+        "overweight": true,
+        "fedex_volumetric_weight": 9,
+        "higher_label_weight": 2,
+        "tag_processed": true
+    }
+]
+```
+
+

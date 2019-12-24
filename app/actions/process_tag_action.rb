@@ -17,7 +17,7 @@ class ProcessTagAction
       }
       fedex_vweight = self.volumetric_weight fedex_params
       label_vweight = self.volumetric_weight label_params
-      label_aweight = label[:parcel][:weight].ceil
+      label_aweight = label[:parcel][:weight].to_f.ceil
       higher_label_weight = label_vweight < label_aweight ? label_aweight : label_vweight
       overweight = higher_label_weight - fedex_vweight > 0 ? false : true
       label.merge!(

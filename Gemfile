@@ -30,6 +30,8 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'fedex'
 
+gem "minitest-rails", "~> 6.0.0"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -54,7 +56,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'minitest'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -26,6 +26,8 @@
               <span class="badge badge-warning">Over Weight </span>
             <% elsif package.tag_processed == false %> 
               <span class="badge badge-danger">Fedex Service fail</span>
+            <% elsif package.overweight == false %> 
+              <span class="badge badge-success">OK</span>
             <% end %> 
           </td>
           <td>

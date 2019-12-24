@@ -25,7 +25,7 @@ class Api::V1::PackagesController < ApplicationController
     }
     @packages = api_v1_package_params.map(&process_tag)
     @packages.map(&save_package)
-    render :index
+    render :index, json: @packages
   end
 
   private
