@@ -4,12 +4,11 @@ Application for process labels packages and calculates if there is an overweight
 
 #### Requirements:
 
-* Ruby version
-    - ruby: 2.6.3
+* Ruby version: `ruby: 2.6.3`
 
 * System dependencies
-     - Rails: 6.0.2
-     - Postgres
+     - `Rails: 6.0.2`
+     - `Postgres`
 
 #### Instalation
 
@@ -43,6 +42,15 @@ rails test
 #### LiveDemo
 
 https://skydrop.herokuapp.com/
+
+## Docs
+
+### How to use
+
+- Enter to [http://0.0.0.0:3000/packages](http://0.0.0.0:3000/packages)
+- Click on Load labels button.
+- Load label json in text area.
+- Click in send.
 
 ### API Package service
 
@@ -118,3 +126,7 @@ export SKYDROP_PASS_DB='yourfaboulousvar'
 export SKYDROP_DB_PORT='yourfaboulousvar'
 export SKYDROP_DB_NAME='yourfaboulousvar'
 ```
+
+### TO-DO
+
+- Create service for resend label when fedex service failed.
