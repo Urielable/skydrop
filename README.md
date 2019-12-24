@@ -100,4 +100,21 @@ curl -X POST \
 ]
 ```
 
+#### Configuration
 
+You can change the next enviroment variables:
+
+```
+# Fedex Service Vars
+export FEDEX_KEY='yourfaboulousvar'
+export FEDEX_PASSWORD='yourfaboulousvar'
+export FEDEX_ACCOUNT_NUMBER='yourfaboulousvar'
+export FEDEX_METER='yourfaboulousvar'
+export FEDEX_MODE='yourfaboulousvar'
+# Database Var
+export SKYDROP_HOST_DB='yourfaboulousvar'
+export SKYDROP_USER_DB='yourfaboulousvar'
+export SKYDROP_PASS_DB='yourfaboulousvar'
+export SKYDROP_DB_PORT='yourfaboulousvar'
+export SKYDROP_DB_NAME='yourfaboulousvar'
+```
